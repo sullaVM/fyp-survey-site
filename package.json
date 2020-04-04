@@ -1,0 +1,11 @@
+{
+  "name": "fyp-survey",
+  "version": "1.0.0",
+  "description": "final year project survey webpage",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Sulla Montes",
+  "license": "ISC"
+}
