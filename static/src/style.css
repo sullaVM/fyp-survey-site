@@ -1,0 +1,167 @@
+body {
+  font-size: 1em;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+#body-wrap {
+  width: 800px;
+  margin: auto;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+#headings {
+  padding: 15px;
+  margin: 100px 0 20px 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin: 0 0 3px 0;
+}
+
+h2 {
+  padding: 15px 15px 10px 15px;
+  font-size: 1.3em;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1em;
+  margin: 0;
+  padding: 5px;
+}
+
+p.description {
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+
+.question {
+  margin-bottom: 40px;
+}
+
+.options {
+  position: relative;
+  width: 100%;
+  margin: 8px 0;
+  background-color: #e3e3e3;
+  padding: 10px 0 20px 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.answer-wrap {
+  float: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-wrap {
+  flex-basis: 1;
+  align-self: center;
+  padding: 0 15px;
+}
+
+.label-wrap {
+  color: #6c6c6c;
+  font-weight: 600;
+  flex-basis: 20%;
+  font-size: 0.8em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.question-slider {
+}
+
+.img-slider-container {
+  position: relative;
+  margin: 20px 0 10px 0;
+  height: 450px;
+}
+
+.img-comp {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.img-comp img {
+  width: 800px;
+  height: auto;
+  display: block;
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index: 10;
+  cursor: ew-resize;
+  width: 30px;
+  height: 30px;
+  background-color: #6c6c6c;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 899px) {
+  #body-wrap {
+    width: 800px;
+  }
+
+  .img-slider-container {
+    height: 450px;
+  }
+
+  .img-comp img {
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  #body-wrap {
+    width: 700px;
+  }
+
+  .img-slider-container {
+    height: 393.5px;
+  }
+
+  .img-comp img {
+    width: 700px;
+  }
+}
+
+@media only screen and (max-width: 699px) {
+  #body-wrap {
+    width: 400px;
+  }
+
+  .img-slider-container {
+    height: 225px;
+  }
+
+  .img-comp img {
+    width: 400px;
+  }
+
+  #headings {
+    padding: 15px;
+    margin: 0;
+    text-align: left;
+    background-color: #F1E4E8;
+  }
+}

@@ -4,8 +4,13 @@
   "description": "final year project survey webpage",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node index.js"
   },
   "author": "Sulla Montes",
-  "license": "ISC"
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "express-handlebars": "^4.0.2"
+  }
 }

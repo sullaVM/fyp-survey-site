@@ -1,0 +1,147 @@
+<div id="body-wrap">
+  <div id="headings">
+    <h1>
+      Realistic Virtual Human Rendering in Real-Time
+    </h1>
+    A perceptual study on a virtual human model made with Unreal Engine.
+  </div>
+
+  <div id="section-one">
+    <h2>
+      Meet Tatiana — how realistic do you think she looks?
+    </h2>
+    <p class="description">
+      <b>• FAKE</b> = a poor-quality generated virtual human <br>
+      <b>• PHOTOREALISTIC</b> = cannot distinguish from a photograph of a real person
+    </p>
+
+    {{#each sectionOne}}
+    <div class="question">
+      <img src="{{this.link}}">
+
+      <div class="options">
+        <h3>{{this.label}}</h3>
+
+        <div class="answer-wrap">
+          <div class="label-wrap" style="text-align: right;">
+            FAKE
+          </div>
+
+          <div class="radio-wrap">
+            <input type="radio" id="age1" name="{{this.name}}" value="1">
+            <input type="radio" id="age1" name="{{this.name}}" value="2">
+            <input type="radio" id="age1" name="{{this.name}}" value="3">
+            <input type="radio" id="age1" name="{{this.name}}" value="4">
+            <input type="radio" id="age1" name="{{this.name}}" value="5">
+            <input type="radio" id="age1" name="{{this.name}}" value="6">
+            <input type="radio" id="age1" name="{{this.name}}" value="7">
+          </div>
+
+          <div class="label-wrap" style="text-align: left;">
+            PHOTOREALISTIC
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  <div id="section-two">
+    <h2>
+      This is her with different rendering — how realistic does she look now?
+    </h2>
+    <p class="description">
+      <b>• FAKE</b> = a poor-quality generated virtual human <br>
+      <b>• PHOTOREALISTIC</b> = cannot distinguish from a photograph of a real person<br><br>
+      Move the sliders to remind yourself what basic quality Tatiana looks like.
+    </p>
+    {{#each sectionTwo}}
+    <div class="question">
+      <div class="img-slider-container">
+        <div class="img-comp">
+          <img src="{{this.linkA}}">
+        </div>
+
+        <div class="img-comp img-comp-top">
+          <div class="clear">
+            <img src="{{this.linkB}}">
+          </div>
+        </div>
+      </div>
+
+      <div class="options">
+        <h3>{{this.label}}</h3>
+
+        <div class="answer-wrap">
+          <div class="label-wrap" style="text-align: right;">
+            FAKE
+          </div>
+
+          <div class="radio-wrap">
+            <input type="radio" id="age1" name="{{this.name}}" value="1">
+            <input type="radio" id="age1" name="{{this.name}}" value="2">
+            <input type="radio" id="age1" name="{{this.name}}" value="3">
+            <input type="radio" id="age1" name="{{this.name}}" value="4">
+            <input type="radio" id="age1" name="{{this.name}}" value="5">
+            <input type="radio" id="age1" name="{{this.name}}" value="6">
+            <input type="radio" id="age1" name="{{this.name}}" value="7">
+          </div>
+
+          <div class="label-wrap" style="text-align: left;">
+            PHOTOREALISTIC
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  <div id="section-three">
+    {{#each sectionFour}}
+    <div class="question-slider">
+
+      <div class="img-slider-container">
+        <div class="img-comp">
+          <img src="{{this.linkA}}">
+        </div>
+
+        <div class="img-comp img-comp-top">
+          <div class="clear">
+            <img src="{{this.linkB}}" class="img-top">
+          </div>
+        </div>
+      </div>
+
+      <div class="options">
+        <h3>{{this.label}}</h3>
+
+        <div class="answer-wrap">
+          <div class="label-wrap" style="text-align: right;">
+            A
+          </div>
+
+          <div class="radio-wrap">
+            <input type="radio" id="age1" name="{{this.name}}" value="1">
+            <span></span>
+            <input type="radio" id="age1" name="{{this.name}}" value="2">
+          </div>
+
+          <div class="label-wrap" style="text-align: left;">
+            B
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    {{/each}}
+  </div>
+
+  <div style="height: 40px"> </div>
+
+</div>
