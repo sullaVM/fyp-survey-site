@@ -2,6 +2,8 @@ const initSlider = () => {
   const imgOver = document.getElementsByClassName("img-comp-top");
 
   for (let item of imgOver) {
+    console.log(item.offsetWidth);
+    if (item.offsetWidth > 0)
     slideAction(item);
   }
 };
@@ -19,7 +21,7 @@ const slideAction = (image) => {
 
   image.parentElement.insertBefore(slider, image);
 
-  slider.style.bottom = 10 +  slider.offsetHeight / 2 + "px";
+  slider.style.bottom = 10 + slider.offsetHeight / 2 + "px";
   slider.style.left = w / 2 - slider.offsetWidth / 2 + "px";
 
   const slideReady = (e) => {
@@ -33,7 +35,6 @@ const slideAction = (image) => {
 
   const slideFinish = () => {
     clicked = false;
-    console.log(clicked);
   };
 
   const slideMove = (e) => {
@@ -72,4 +73,37 @@ const slideAction = (image) => {
   window.addEventListener("touchstop", slideFinish);
 };
 
-initSlider();
+const goSection2 = () => {
+  const prev = document.getElementById("section-one");
+  prev.hidden = true;
+
+  const next = document.getElementById("section-two");
+  next.hidden = false;
+  initSlider();
+
+  window.location.assign("#section-two");
+};
+
+const goSection3 = () => {
+  const prev = document.getElementById("section-two");
+  prev.hidden = true;
+
+  const next = document.getElementById("section-three");
+  next.hidden = false;
+
+  initSlider();
+
+  window.location.assign("#section-three");
+};
+
+const goSection4 = () => {
+  const prev = document.getElementById("section-three");
+  prev.hidden = true;
+
+  const next = document.getElementById("section-four");
+  next.hidden = false;
+
+  initSlider();
+
+  window.location.assign("#section-four");
+};
