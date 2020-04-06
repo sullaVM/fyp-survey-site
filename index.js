@@ -13,41 +13,36 @@ const index = (request, response) => {
   console.log(request.query.num);
 
   const s1Links = [
-    "img/basic-face.png",
-    "img/b-eye.png",
+    'img/b-face.png',
+    'img/b-eye.png',
   ];
-  const s1Labels = [
-    "Full Face",
-    "Eye Close Up",
-  ]
+  const labelsSet1 = [
+    'Full Face',
+    'Eye Close Up',
+  ];
 
   const s2Links = [
-    "img/hq-face.png",
-    "img/hq-eye.png",
+    'img/hq-face.png',
+    'img/hq-eye.png',
   ];
-  const s2Labels = [
-    "Full Face",
-    "Eye Close Up",
-  ]
 
   const s3Links = [
-    "img/basic-face.png",
-    "img/b-eye.png",
+    'img/rt-face.png',
+    'img/rt-eye.png',
   ];
-  const s3Labels = [
-    "Full Face",
-    "Eye Close Up",
-  ]
 
   const s4Links = [
-    ["img/hq-skin.png", "img/skin-no-specular.png"],
+    ['img/hq-skin.png', 'img/skin-no-specular.png'],
+  ];
+  const labelsSet2 = [
+    'Skin Close Up',
   ]
 
   const sectionOne = [];
   s1Links.forEach((link, i) => {
     sectionOne.push({
       link,
-      label: s1Labels[i],
+      label: labelsSet1[i],
       name: `s1-${i}`,
     })
   });
@@ -55,14 +50,22 @@ const index = (request, response) => {
   const sectionTwo = [];
   s2Links.forEach((link, i) => {
     sectionTwo.push({
-      linkA: s1Links[i],
-      linkB: link,
-      label: s2Labels[i],
+      linkA: link,
+      linkB: s1Links[i],
+      label: labelsSet1[i],
       name: `s2-${i}`,
     })
   });
 
   const sectionThree = [];
+  s3Links.forEach((link, i) => {
+    sectionThree.push({
+      linkA: link,
+      linkB: s2Links[i],
+      label: labelsSet1[i],
+      name: `s3-${i}`,
+    })
+  });
 
   const sectionFour = [];
   s4Links.forEach((link, i) => {
@@ -70,6 +73,7 @@ const index = (request, response) => {
       linkA: link[0],
       linkB: link[1],
       name: `s4-${i}`,
+      label: labelsSet2[i],
     });
   });
 
