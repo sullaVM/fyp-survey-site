@@ -74,66 +74,75 @@ const index = (_request, response) => {
   });
 };
 
-const submit = async (request, response) => {
+const submit = (request, response) => {
   try {
     const source = request.header("user-agent");
     console.log(source);
-  
+
     const answer = request.body;
     const data = {
       source,
       answer,
     };
 
-    fs.appendFile("responses.json", `${JSON.stringify(data, null, 4)},`, (err) => {
-      if (err) {
-        throw err;
+    fs.appendFile(
+      "responses.json",
+      `${JSON.stringify(data, null, 4)},`,
+      (err) => {
+        if (err) {
+          throw err;
+        }
       }
-    });
-  
-    console.log(info);
-  
+    );
+
     response.status(200).send(`Thank you! <3`);
   } catch (error) {
     console.log(error);
-    response.status(500).send('Something went wrong :(')
+    response.status(500).send("Something went wrong :(");
   }
 };
 
-const testMail = async (request, response) => {
+const sendMail = async (request, response) => {
   try {
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
+      host: "smtp.gmail.com",
       port: 465,
       secure: true,
       auth: {
-        type: 'OAuth2',
+        type: "OAuth2",
         user: process.env.GMAIL,
+        pass: process.env.PASS,
         refreshToken: process.env.GMAIL_REFRESH_TOKEN,
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       },
     });
-  
-    let info = await transporter.sendMail({
-      from: process.env.GMAIL,
-      to: "montess@tcd.ie",
-      subject: "Survey Response!",
-      text: 'test',
-    });
-  
-    console.log(info);
-  
+
+    transporter.sendMail(
+      {
+        from: process.env.GMAIL,
+        to: "montess@tcd.ie",
+        subject: "Survey Response!",
+        text: "test",
+      },
+      (error, info) => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Email sent: ", info.response);
+        }
+      }
+    );
+
     response.sendStatus(200);
   } catch (error) {
     console.log(error);
     response.sendStatus(200);
   }
-
 };
 
 app.get("/", index);
 app.post("/submit", submit);
-app.get('/test', testMail);
+app.get("/send", sendMail);
 
 app.listen(apiPort, () => console.log(`Listening on port: ${apiPort}`));
