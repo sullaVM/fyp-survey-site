@@ -58,6 +58,12 @@ const slideAction = (image) => {
     const a = image.getBoundingClientRect();
     e = e || window.event;
 
+    console.log(e);
+
+    if (!e.pageX) {
+      return e.changedTouches[0].pageX - a.left - window.pageXOffset;
+    }
+
     return e.pageX - a.left - window.pageXOffset;
   };
 
@@ -69,8 +75,8 @@ const slideAction = (image) => {
   slider.addEventListener("mousedown", slideReady);
   window.addEventListener("mouseup", slideFinish);
 
-  slider.addEventListener("touchstart", slideReady);
-  window.addEventListener("touchend", slideFinish);
+  slider.ontouchstart = slideReady;
+  window.ontouchend = slideFinish;
 };
 
 const goSection2 = () => {
