@@ -70,7 +70,7 @@ const slideAction = (image) => {
   window.addEventListener("mouseup", slideFinish);
 
   slider.addEventListener("touchstart", slideReady);
-  window.addEventListener("touchstop", slideFinish);
+  window.addEventListener("touchend", slideFinish);
 };
 
 const goSection2 = () => {
