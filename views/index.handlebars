@@ -10,14 +10,18 @@
 
     <div id="section-one">
       <h2>
-        Part 1 of 4: Meet Tatiana — she's a virtual human rendered in Unreal Engine 4. 
+        Part 1 of 4: Meet Tatiana — she's a virtual human rendered in Unreal Engine 4.
       </h2>
-      
-      <h4>
-        In this survey, you will be asked to rate Tatiana's photorealism 
-        in different rendering qualities. Each rendered image is labelled based
-        on quality. To begin, we will start with this scale:
-      </h4>
+
+      <div id="intro">
+        <p>In this survey, you will be asked to rate and compare Tatiana's photorealism
+          in different rendering qualities. Each image is labelled based
+          on its rendering quality.</p>
+
+        <p>No personal data will be collected at any point of this survey.</p>
+
+        <p>To begin, we will start with this scale:</p>
+      </div>
 
       <p class="description">
         Scale: <br>
@@ -26,69 +30,7 @@
       </p>
 
       {{#each sectionOne}}
-      <div class="question">
-        <div class="img-slider-container">
-          <img src="{{this.link}}">
-
-          <div class="label-left">
-            Quality A
-          </div>
-        </div>
-
-        <div class="options">
-          <h3>{{this.label}} <br> In this image, does she look fake or photorealistic?</h3>
-
-          <div class="answer-wrap">
-            <div class="label-wrap" style="text-align: right;">
-              FAKE
-            </div>
-
-            <div class="radio-wrap">
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="1">
-                <label for="{{this.name}}">1</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="2">
-                <label for="{{this.name}}">2</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="3">
-                <label for="{{this.name}}">3</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="4">
-                <label for="{{this.name}}">4</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="5">
-                <label for="{{this.name}}">5</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="6">
-                <label for="{{this.name}}">6</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="7">
-                <label for="{{this.name}}">7</label>
-              </span>
-
-            </div>
-
-            <div class="label-wrap" style="text-align: left;">
-              PHOTOREALISTIC
-            </div>
-
-          </div>
-
-        </div>
-      </div>
+      {{> question}}
       {{/each}}
 
       <div style="text-align: center;">
@@ -108,84 +50,11 @@
         <b>7 • MORE REALISTIC</b> = Quality B is more photorealistic than Quality A
         <br><br>
         Move the circle slider to either left or right to fully view each quality.
+        <b>The quality you have to judge is on the right side.</b>
       </p>
 
       {{#each sectionTwo}}
-      <div class="question-slider">
-        <div class="img-slider-container">
-
-          <div class="img-comp">
-            <img src="{{this.linkA}}">
-
-            <div class="label-right">
-              Quality B
-            </div>
-          </div>
-
-          <div class="img-comp img-comp-top">
-            <div class="label-left">
-              Quality A
-            </div>
-
-            <img src="{{this.linkB}}">
-
-          </div>
-
-        </div>
-
-        <div class="options">
-          <h3>{{this.label}} <br> Is Quality B: less realistic, the same or more realistic?</h3>
-
-          <div class="answer-wrap">
-            <div class="label-wrap" style="text-align: right;">
-              LESS REALISTC
-            </div>
-
-            <div class="radio-wrap">
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="1">
-                <label for="{{this.name}}">1</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="2">
-                <label for="{{this.name}}">2</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="3">
-                <label for="{{this.name}}">3</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="4" checked>
-                <label for="{{this.name}}">4</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="5">
-                <label for="{{this.name}}">5</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="6">
-                <label for="{{this.name}}">6</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="7">
-                <label for="{{this.name}}">7</label>
-              </span>
-            </div>
-
-            <div class="label-wrap" style="text-align: left;">
-              MORE REALISTC
-            </div>
-
-          </div>
-
-        </div>
-      </div>
+      {{> questionSlider}}
       {{/each}}
 
       <div style="text-align: center;">
@@ -196,7 +65,7 @@
 
     <div id="section-three" hidden>
       <h2>
-        Part 3 of 4: Compare (previous) Quality B to (new) Quality C 
+        Part 3 of 4: Compare (previous) Quality B to (new) Quality C
         — does Quality C affect your prerception of her realism?
       </h2>
       <p class="description">
@@ -206,84 +75,11 @@
         <b>7 • MORE REALISTIC</b> = Quality C is more photorealistic than Quality B
         <br><br>
         Move the circle slider to either left or right to fully view each quality.
+        <b>The quality you have to judge is on the right side.</b>
       </p>
 
       {{#each sectionThree}}
-      <div class="question-slider">
-        <div class="img-slider-container">
-
-          <div class="img-comp">
-            <img src="{{this.linkA}}">
-
-            <div class="label-right">
-              Quality C
-            </div>
-          </div>
-
-          <div class="img-comp img-comp-top">
-            <div class="label-left">
-              Quality B
-            </div>
-
-            <img src="{{this.linkB}}">
-
-          </div>
-
-        </div>
-
-        <div class="options">
-          <h3>{{this.label}} <br> Is Quality C: less realistic, the same or more realistic?</h3>
-
-          <div class="answer-wrap">
-            <div class="label-wrap" style="text-align: right;">
-              LESS REALISTC
-            </div>
-
-            <div class="radio-wrap">
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="1">
-                <label for="{{this.name}}">1</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="2">
-                <label for="{{this.name}}">2</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="3">
-                <label for="{{this.name}}">3</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="4" checked>
-                <label for="{{this.name}}">4</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="5">
-                <label for="{{this.name}}">5</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="6">
-                <label for="{{this.name}}">6</label>
-              </span>
-
-              <span class="radio-line">
-                <input type="radio" id="age1" name="{{this.name}}" value="7">
-                <label for="{{this.name}}">7</label>
-              </span>
-            </div>
-
-            <div class="label-wrap" style="text-align: left;">
-              MORE REALISTC
-            </div>
-
-          </div>
-
-        </div>
-      </div>
+      {{> questionSlider}}
       {{/each}}
 
       <div style="text-align: center;">
@@ -293,56 +89,20 @@
 
     <div id="section-four" hidden>
       <h2>
-        Part 4 of 4: Let's look at the details — which image looks more realistic?
+        Part 4 of 4: A (new) Quality D, same process — does Quality D look more realistic than Quality C?
       </h2>
+      <p class="description">
+        Scale: <br>
+        <b>1 • LESS REALISTC</b> = Quality D is less photorealistic than Quality C<br>
+        <b>4 • NO DIFFERENCE</b> = Quality D is same level of photorealism with Quality C<br>
+        <b>7 • MORE REALISTIC</b> = Quality D is more photorealistic than Quality C
+        <br><br>
+        Move the circle slider to either left or right to fully view each quality.
+        <b>The quality you have to judge is on the right side. &#xe022;</b>
+      </p>
 
       {{#each sectionFour}}
-      <div class="question-slider">
-
-        <div class="img-slider-container">
-
-          <div class="img-comp">
-            <img src="{{this.linkA}}">
-
-            <div class="label-right">
-              Image A
-            </div>
-          </div>
-
-          <div class="img-comp img-comp-top">
-            <div class="label-left">
-              Image B
-            </div>
-
-            <img src="{{this.linkB}}">
-
-          </div>
-
-        </div>
-
-        <div class="options">
-          <h3>{{this.label}} <br> Which image looks more realistic?</h3>
-
-          <div class="answer-wrap">
-            <div class="label-wrap" style="text-align: right;">
-              A
-            </div>
-
-            <div class="radio-wrap">
-              <input type="radio" id="age1" name="{{this.name}}" value="1">
-              <span></span>
-              <input type="radio" id="age1" name="{{this.name}}" value="2">
-            </div>
-
-            <div class="label-wrap" style="text-align: left;">
-              B
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
+      {{> questionSlider}}
       {{/each}}
 
       <div style="text-align: center;">

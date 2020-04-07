@@ -46,6 +46,12 @@ h4 {
   font-weight: 500;
 }
 
+#intro {
+  background-color: #DCD0D3;
+  margin: 0;
+  padding: 1px 15px;
+}
+
 p.description {
   background-color: #F1E4E8;
   margin: 0;
