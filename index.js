@@ -124,10 +124,10 @@ const testMail = async (request, response) => {
   
     console.log(info);
   
-    response.send(200);
+    response.sendStatus(200);
   } catch (error) {
     console.log(error);
-    response.send(200);
+    response.sendStatus(200);
   }
 
 };
