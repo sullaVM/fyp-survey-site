@@ -1,6 +1,10 @@
-<div id="section-{{this.sectionName}}" {{this.hidden}}>
+<div id="section-{{this.curSection}}" hidden>
+  <h2>
+    Part {{this.curSection}} of 6
+  </h2>
+
   <p class="description">
-    This is the detailed scale: <br>
+    Scale: <br>
     <b>-3 • MUCH LESS REALISTC</b><br>
     <b>-2 • MODERATELY LESS REALISTC</b><br>
     <b>-1 • SLIGHTLY LESS REALISTC</b><br>
@@ -13,19 +17,34 @@
     <b>The quality you have to judge is on the left side.</b>
   </p>
 
-  <h2>
-    Part {{this.sectionName}} of 6
-  </h2>
+  <div class="description" id="device" {{this.hideDevice}}>
+    What device are you currently using?
+    <input type="radio" name="screen-type" value="smartphone">
+    <label for="screen-type">Smartphone</label>
+
+    <input type="radio" name="screen-type" value="laptop/desktop">
+    <label for="screen-type">Laptop/Desktop</label>
+
+    <input type="radio" name="screen-type" value="tablet">
+    <label for="screen-type">Tablet</label>
+
+    <input type="radio" name="screen-type" value="TV">
+    <label for="screen-type">TV</label>
+  </div>
 
   {{#each this.items}}
   {{> questionSlider}}
   {{/each}}
 
   <div style="text-align: center;">
+    <span class="next-btn"
+      onclick="goToSection('section-{{this.curSection}}', 'section-{{this.prevSection}}')">Back</span>
+
     {{#if submit}}
     <button>Submit</button>
     {{else}}
-    <span class="next-btn" onclick="goToSection({{this.nextSection}})">Next</span>
+    <span class="next-btn"
+      onclick="goToSection('section-{{this.curSection}}', 'section-{{this.nextSection}}')">Next</span>
     {{/if}}
   </div>
 </div>

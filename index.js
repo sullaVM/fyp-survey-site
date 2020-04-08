@@ -3,11 +3,18 @@ const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const fs = require("fs");
-var shuffle = require('shuffle-array');
+var shuffle = require("shuffle-array");
+const responsiveImages = require("express-responsive-images");
 
 const apiPort = 8082;
 const app = express();
 
+app.use(
+  responsiveImages({
+    staticDir: "/static",
+    watchedDirectories: ["/img"],
+  })
+);
 app.use(express.static("static"));
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
@@ -15,8 +22,12 @@ app.set("view engine", "handlebars");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const levelPairs = [
-  [1, 2], [1, 3], [1, 4],
-  [2, 3], [2, 4], [3, 4],
+  [1, 2],
+  [1, 3],
+  [1, 4],
+  [2, 3],
+  [2, 4],
+  [3, 4],
 ];
 
 const labelSet = [
@@ -30,7 +41,7 @@ const labelSet = [
   "Skin Close Up (Front)",
 ];
 
-const random = (request, response) => {
+const index = (request, response) => {
   const masterList = [];
 
   labelSet.forEach((label, i) => {
@@ -41,18 +52,16 @@ const random = (request, response) => {
         linkB: `img/Level${shuffledPair[1]}/l${shuffledPair[1]}-${i}.png`,
         name: `${i},${shuffledPair[0]},${shuffledPair[1]}`,
         label,
-        rightQuality: 'B',
-        leftQuality: 'A',
+        rightQuality: "B",
+        leftQuality: "A",
       });
     });
   });
 
   const shuffledMasterList = shuffle(masterList);
 
-  console.log(shuffledMasterList.length);
-
   // Divide list into 6 parts
-  if (shuffledMasterList.length != (labelSet.length * levelPairs.length)) {
+  if (shuffledMasterList.length != labelSet.length * levelPairs.length) {
     response.sendStatus(500);
   }
 
@@ -63,11 +72,11 @@ const random = (request, response) => {
     return false;
   };
 
-  const isHidden = (section) => {
+  const ifSection1 = (section, value1, value2) => {
     if (section == 1) {
-      return '';
+      return value1;
     }
-    return 'hidden';
+    return value2;
   };
 
   const sections = [];
@@ -75,22 +84,22 @@ const random = (request, response) => {
   let levelNum = 1;
   for (let i = 0; i < shuffledMasterList.length; i = i + sectionLen) {
     sections.push({
-      sectionName: levelNum,
+      hideDevice: ifSection1(levelNum, "", "hidden"),
+      prevSection: ifSection1(levelNum, "tutorial", levelNum - 1),
+      curSection: levelNum,
       nextSection: levelNum + 1,
       submit: isSubmit(levelNum),
-      hidden: isHidden(levelNum),
       items: shuffledMasterList.slice(i, i + sectionLen),
     });
-    console.log(`${i}-${i + sectionLen}`);
     levelNum++;
   }
 
-  response.render('random', {
+  response.render("random", {
     sections,
   });
 };
 
-const index = (_request, response) => {
+const defined = (_request, response) => {
   const sectionOne = [];
   const sectionTwo = [];
   const sectionThree = [];
@@ -143,8 +152,6 @@ const index = (_request, response) => {
 const submit = (request, response) => {
   try {
     const source = request.header("user-agent");
-    console.log(source);
-
     const answer = request.body;
     const data = {
       source,
@@ -161,7 +168,7 @@ const submit = (request, response) => {
       }
     );
 
-    response.status(200).send(`Thank you! <3`);
+    response.render("success");
   } catch (error) {
     console.log(error);
     response.status(500).send("Something went wrong :(");
@@ -173,7 +180,7 @@ const sendMail = async (request, response) => {
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
-      secure: true,
+      secure: false,
       auth: {
         type: "OAuth2",
         user: process.env.EMAIL,
@@ -205,9 +212,9 @@ const sendMail = async (request, response) => {
   }
 };
 
-app.get('/', index);
-app.post('/submit', submit);
-app.get('/send', sendMail);
-app.get('/random', random);
+app.get("/", index);
+app.post("/submit", submit);
+app.get("/send", sendMail);
+app.get("/random", defined);
 
 app.listen(apiPort, () => console.log(`Listening on port: ${apiPort}`));

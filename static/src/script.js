@@ -1,8 +1,13 @@
-const initSlider = () => {
-  const imgOver = document.getElementsByClassName("img-comp-top");
+const imgOver = document.getElementsByClassName("img-comp-top");
 
+const initSlider = () => {
   for (let item of imgOver) {
-    if (item.offsetWidth > 0) slideAction(item);
+    if (!item.initialisedSlider) {
+      if (item.offsetWidth > 0) {
+        slideAction(item);
+        item.initialisedSlider = true;
+      }
+    }
   }
 };
 
@@ -15,8 +20,12 @@ const slideAction = (image) => {
   image.style.width = w / 2 + "px";
 
   const slider = document.createElement("div");
+  const arrows = document.createElement("img");
+  arrows.src = "img/arrows.png";
+  arrows.setAttribute("class", "arrows");
   slider.setAttribute("class", "img-comp-slider");
 
+  slider.appendChild(arrows);
   image.parentElement.insertBefore(slider, image);
 
   slider.style.bottom = 10 + slider.offsetHeight / 2 + "px";
@@ -29,8 +38,8 @@ const slideAction = (image) => {
 
     window.addEventListener("mousemove", slideMove);
     window.addEventListener("touchmove", slideMove);
-    window.addEventListener('touchend', slideFinish);
-    window.addEventListener('touchcancel', slideFinish);
+    window.addEventListener("touchend", slideFinish);
+    window.addEventListener("touchcancel", slideFinish);
   };
 
   const slideFinish = () => {
@@ -76,24 +85,23 @@ const slideAction = (image) => {
   slider.addEventListener("mousedown", slideReady);
   window.addEventListener("mouseup", slideFinish);
 
-  slider.ontouchstart = slideReady;
-  window.ontouchend = slideFinish;
+  slider.addEventListener("touchstart", slideReady);
+  window.addEventListener("touchend", slideFinish);
 };
 
-const goToSection = (section) => {
-  const prev = document.getElementById(`section-${section - 1}`);
+const goToSection = (previous, next) => {
+  const prev = document.getElementById(previous);
   if (prev) {
     prev.hidden = true;
   }
 
-  const next = document.getElementById(`section-${section}`);
-  if (next) {
-    next.hidden = false;
+  const nex = document.getElementById(next);
+  if (nex) {
+    nex.hidden = false;
   }
 
   initSlider();
-
-  window.location.assign(`#section-${section}`);
+  window.location.assign(`#${next}`);
 };
 
 initSlider();

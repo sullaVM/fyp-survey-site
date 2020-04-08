@@ -6,29 +6,58 @@
     A perceptual study on a virtual human model.
   </div>
 
-  <h2>
-    Meet Tatiana — she's a virtual human rendered in Unreal Engine 4.
-  </h2>
-
   <div id="intro">
-    <p>In this survey, you are asked to compare Tatiana's photorealism
-      in different rendering qualities. Each image is labelled A and B.
-      We'd like to know if you think the image A is less realistic, the same
-      or more realistic than image B. Image A will always be on the left-hand side
-      and Image B on the right-hand side.
-    </p>
+    <p><b>Please read this form carefully before you decide to participate in this study.</b></p>
 
-    <p>No personal data will be collected at any point of this survey.</p>
+    <p><b>Aim:</b> The aim of this study is to investigate participants’ perception of virtual characters.</p>
 
-    <p>This survey works on mobile but if possible, please take this survey on a laptop/desktop.</p>
+    <p><b>What you will be asked to do in the study:</b> You will be asked to compare different versions of the same
+      character and compare them in terms of realism. If you do not want to answer any question, you are permitted to do
+      so.</p>
+
+    <p><b>Time required:</b> It is expected that the total time required will be approximately 5 min, depending on the
+      time it takes to decide on your answer.</p>
+
+    <p> <b>Confidentiality:</b> Your identity will be kept confidential. It will not be possible to link the data we
+      collect to your name. The data we collect will be analysed together with the data collected from other
+      participants, and
+      generalized results and conclusions will be drawn from these experiments will be submitted for publication at
+      conferences and/or scientific journals. Your name will not be used in any report or article.</p>
+
+    <b>Declaration</b>
+    <ul>
+      <li>I understand that my participation in an experiment is entirely voluntary.</li>
+      <li>I am informed about the purpose of the study.</li>
+      <li>I understand that I can withdraw from the study at any time without having to give a reason and without
+        penalty.</li>
+      <li>I have been given the option of omitting questions that I do not wish to answer if a questionnaire is used.
+      </li>
+      <li>All the information collected will remain confidential.</li>
+      <li>I agree that my data is used for scientific purposes and therefore have no objection that my data is published
+        in scientific publications in a way that does not reveal my identity.</li>
+      <li>I acknowledge that the College requires that all research data be held for a period of ten years after the
+        completion of a research project.</li>
+      <li>Neither my participation in the experiment, nor the results obtained, have any bearing on my academic record.
+        If I withdraw, this has no bearing on my academic record.</li>
+      <li>I will be given answers to any question I have about the study.</li>
+      <li>I am over 18.</li>
+    </ul>
+
+    <i>* 'the College' - Trinity College Dublin</i>
+
+    <center>
+      <span class="next-btn" onclick="goToSection('intro', 'section-tutorial')">I consent</span>
+      <span class="next-btn" onclick="alert('You have to consent to continue')">I do not consent</span>
+    </center>
+    <br>
   </div>
 
-  <form action="/submit" method="post">
+  {{> tutorial}}
 
+  <form action="/submit" method="post">
     {{#each sections}}
     {{> section}}
     {{/each}}
-
   </form>
 
   <div style="height: 40px"> </div>

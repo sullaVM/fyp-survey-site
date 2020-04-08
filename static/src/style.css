@@ -47,9 +47,17 @@ h4 {
 }
 
 #intro {
-  background-color: #DCD0D3;
+  background-color: #F1E4E8;
   margin: 0;
   padding: 1px 15px;
+}
+
+.description {
+  background-color: #F1E4E8;
+  margin: 0;
+  padding: 15px;
+  margin-bottom: 25px;
+  margin-top: -5px;
 }
 
 p.description {
@@ -153,6 +161,16 @@ p.description {
   background-color: #ffffff;
   opacity: 0.7;
   border-radius: 50%;
+  line-height: 30px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+img.arrows {
+  height: 100%;
+  width: 24px;
+  display: inline-block;
+  margin: auto;
 }
 
 @media screen and (max-width: 899px) {
@@ -209,27 +227,29 @@ p.description {
 }
 
 .next-btn, button{
+  display: inline-block;
   font-size: 1em;
-  margin: auto;
+  margin: 5px;
   padding: 10px;
-  border-radius: 10%;
-  background-color: #E2DCDE;
+  background-color: #BCA1AD;
+  border: 2px solid #BCA1AD;
   cursor: pointer ;
 }
 
 .next-btn:hover, button:hover {
-  background-color: #BCA1AD;
+  background-color: #FFFFFF;
 }
 
 .label-left {
   position: absolute;
   bottom: 10px;
   left: 10px;
-  background-color: white;
+  background-color: #FFFFFF;
   padding: 3px;
   z-index: 2;
   overflow: hidden;
   font-size: 1.2em;
+  height: 1.2em;
 }
 
 .label-right {
