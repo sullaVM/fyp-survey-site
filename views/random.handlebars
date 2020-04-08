@@ -1,0 +1,36 @@
+<div id="body-wrap">
+  <div id="headings">
+    <h1>
+      Realistic Virtual Human Rendering in Real-Time
+    </h1>
+    A perceptual study on a virtual human model.
+  </div>
+
+  <h2>
+    Meet Tatiana — she's a virtual human rendered in Unreal Engine 4.
+  </h2>
+
+  <div id="intro">
+    <p>In this survey, you are asked to compare Tatiana's photorealism
+      in different rendering qualities. Each image is labelled Quality A and Quality B.
+      We'd like to know if you think the image Quality A is less realistic, the same
+      or more realistic than Quality B. Quality A will always be on the left-hand side
+      and Quality B on the right-hand side.
+    </p>
+
+    <p>No personal data will be collected at any point of this survey.</p>
+
+    <p>This survey works on mobile but if possible, please take this survey on a laptop/desktop.</p>
+  </div>
+
+  <form action="/submit" method="post">
+
+    {{#each sections}}
+    {{> section}}
+    {{/each}}
+
+  </form>
+
+  <div style="height: 40px"> </div>
+
+</div>

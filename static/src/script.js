@@ -2,9 +2,7 @@ const initSlider = () => {
   const imgOver = document.getElementsByClassName("img-comp-top");
 
   for (let item of imgOver) {
-    console.log(item.offsetWidth);
-    if (item.offsetWidth > 0)
-    slideAction(item);
+    if (item.offsetWidth > 0) slideAction(item);
   }
 };
 
@@ -31,6 +29,8 @@ const slideAction = (image) => {
 
     window.addEventListener("mousemove", slideMove);
     window.addEventListener("touchmove", slideMove);
+    window.addEventListener('touchend', slideFinish);
+    window.addEventListener('touchcancel', slideFinish);
   };
 
   const slideFinish = () => {
@@ -58,9 +58,10 @@ const slideAction = (image) => {
     const a = image.getBoundingClientRect();
     e = e || window.event;
 
-    console.log(e);
-
     if (!e.pageX) {
+      if (!e.changedTouches) {
+        return a.left - window.pageXOffset;
+      }
       return e.changedTouches[0].pageX - a.left - window.pageXOffset;
     }
 
@@ -79,37 +80,20 @@ const slideAction = (image) => {
   window.ontouchend = slideFinish;
 };
 
-const goSection2 = () => {
-  const prev = document.getElementById("section-one");
-  prev.hidden = true;
+const goToSection = (section) => {
+  const prev = document.getElementById(`section-${section - 1}`);
+  if (prev) {
+    prev.hidden = true;
+  }
 
-  const next = document.getElementById("section-two");
-  next.hidden = false;
-  initSlider();
-
-  window.location.assign("#section-two");
-};
-
-const goSection3 = () => {
-  const prev = document.getElementById("section-two");
-  prev.hidden = true;
-
-  const next = document.getElementById("section-three");
-  next.hidden = false;
+  const next = document.getElementById(`section-${section}`);
+  if (next) {
+    next.hidden = false;
+  }
 
   initSlider();
 
-  window.location.assign("#section-three");
+  window.location.assign(`#section-${section}`);
 };
 
-const goSection4 = () => {
-  const prev = document.getElementById("section-three");
-  prev.hidden = true;
-
-  const next = document.getElementById("section-four");
-  next.hidden = false;
-
-  initSlider();
-
-  window.location.assign("#section-four");
-};
+initSlider();
