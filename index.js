@@ -3,18 +3,11 @@ const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const fs = require("fs");
-var shuffle = require("shuffle-array");
-const responsiveImages = require("express-responsive-images");
+const shuffle = require("shuffle-array");
 
 const apiPort = 8082;
 const app = express();
 
-app.use(
-  responsiveImages({
-    staticDir: "/static",
-    watchedDirectories: ["/img"],
-  })
-);
 app.use(express.static("static"));
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
