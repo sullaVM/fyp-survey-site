@@ -70,6 +70,7 @@ const index = (request, response) => {
     }
     return value2;
   };
+  
 
   const sections = [];
   const sectionLen = shuffledMasterList.length / levelPairs.length;

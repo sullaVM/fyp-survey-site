@@ -90,6 +90,17 @@ const slideAction = (image) => {
 };
 
 const goToSection = (previous, next) => {
+  const inputs = document.getElementsByTagName('input');
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].offsetLeft != 0) {
+      if (!inputs[i].checkValidity()) {
+        inputs[i].scrollIntoView(true);
+        inputs[i].reportValidity();
+        return false;
+      }
+    }
+  }
+
   const prev = document.getElementById(previous);
   if (prev) {
     prev.hidden = true;
@@ -98,10 +109,9 @@ const goToSection = (previous, next) => {
   const nex = document.getElementById(next);
   if (nex) {
     nex.hidden = false;
+    initSlider();
+    nex.scrollIntoView(true);
   }
-
-  initSlider();
-  window.location.assign(`#${next}`);
 };
 
 initSlider();

@@ -12,8 +12,8 @@
     <p><b>Aim:</b> The aim of this study is to investigate participants’ perception of virtual characters.</p>
 
     <p><b>What you will be asked to do in the study:</b> You will be asked to compare different versions of the same
-      character and compare them in terms of realism. If you do not want to answer any question, you are permitted to do
-      so.</p>
+      character and compare them in terms of realism. If you do not want to answer any question, you are permitted to
+      leave the page at anytime.</p>
 
     <p><b>Time required:</b> It is expected that the total time required will be approximately 5 min, depending on the
       time it takes to decide on your answer.</p>
@@ -54,7 +54,7 @@
 
   {{> tutorial}}
 
-  <form action="/submit" method="post">
+  <form action="/submit" method="post" onsubmit="submit()">
     {{#each sections}}
     {{> section}}
     {{/each}}
