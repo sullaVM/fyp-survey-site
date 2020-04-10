@@ -250,14 +250,20 @@ img.arrows {
   overflow: hidden;
   font-size: 1.2em;
   height: 1.2em;
+  width: 100%;
+  opacity: 0.7;
 }
 
 .label-right {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  background-color: white;
+  background-color: #6c6c6c;
+  color: #FFFFFF;
   padding: 3px;
   z-index: 4;
   font-size: 1.2em;
+  width: 100%;
+  text-align: right;
+  opacity: 0.7;
 }
