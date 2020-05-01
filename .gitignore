@@ -1,5 +1,7 @@
 .env
 
+parser.js
+
 node_modules/
 
 responses.json
