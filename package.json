@@ -10,7 +10,7 @@
   "author": "Sulla Montes",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-handlebars": "^4.0.3",
     "express-responsive-images": "^1.1.4",
     "nodemailer": "^6.4.6",
